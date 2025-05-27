@@ -1,14 +1,15 @@
 from ultralytics import YOLO
+import os
 
 # Load a model
 model = YOLO("yolo11n-pose.pt")  # load an official model
 
 # Predict with the model
-results = model("https://ultralytics.com/images/bus.jpg")  # predict on an image
+results = model.track("Input\MarchingVideoToTestHumanPose.mp4", show=True)  # predict on an image
 
 # Access the results
 for result in results:
-    xy = result.keypoints.xy  # x and y coordinates
+    xy = result.keypoints.xy # x and y coordinates
     print(xy)
     xyn = result.keypoints.xyn  # normalized
     print(xyn)
