@@ -5,7 +5,7 @@ import os
 model = YOLO("yolo11n-pose.pt")  # load an official model
 
 # Predict with the model
-results = model.track("Input\MarchingVideoToTestHumanPose.mp4")  # predict on an image
+results = model.track("Input\MarchingVideoToTestHumanPose.mp4", show = True)  # predict on an image
 
 # Keypoint indexes
 # 1. Nose
