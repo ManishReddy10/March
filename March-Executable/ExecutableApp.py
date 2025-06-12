@@ -151,7 +151,7 @@ def displayAnalyzedLiveFeed():
                                     mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
                                     )               
             
-            cv2.imshow('Mediapipe Feed', image)
+            cv2.imshow('Mediapipe Feed CLICK q TO EXIST', image)
 
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
@@ -171,26 +171,26 @@ root.title("March!")
 # Set geometry (widthxheight)
 root.geometry('350x200')
 
-#adding a label to the root window
-lbl = Label(root, text = "Are you a Geek?")
-lbl.grid()
+# #adding a label to the root window
+# lbl = Label(root, text = "Are you a Geek?")
+# lbl.grid()
 
-# function to display text when
-# button is clicked
-def clicked():
-    lbl.configure(text = "I just got clicked")
+# # function to display text when
+# # button is clicked
+# def clicked():
+#     lbl.configure(text = "I just got clicked")
 
-# button widget with red color text
-# inside
-btn = Button(root, text = "Click me" ,
-             fg = "red", command=clicked)
+# # button widget with red color text
+# # inside
+# btn = Button(root, text = "Click me" ,
+#              fg = "red", command=clicked)
 
 # set Button grid
-btn.grid(column=1, row=0)
+# btn.grid(column=1, row=0)
 
 btn2 = Button(root, text = "Click me to launch March!" ,
              fg = "red", command=displayAnalyzedLiveFeed)
-btn2.grid(column=1, row=2)
+btn2.grid(column=2, row=2)
 
 # all widgets will be here
 # Execute Tkinter
