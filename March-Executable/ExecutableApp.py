@@ -19,7 +19,7 @@ mp_drawing = mp.solutions.drawing_utils
 
 
 import math
-# Calculate the angle between three points
+# Calculate the 2D angle between three points
 def calcul_angle2D(point1, point2, point3):
     x1, y1, _ = point1
     x2, y2, _ = point2
