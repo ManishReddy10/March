@@ -4,7 +4,7 @@ from cx_Freeze import setup, Executable
 build_exe_options = {
     "packages": ["mediapipe", "cv2", "matplotlib"],
     "include_files": [
-        "c:\\Users\\ysman_chpques\\Downloads\\Programming\\March-Executable\\.venv\\Lib\\site-packages\\mediapipe"
+        "c:\\Users\\ysman_chpques\\Downloads\\Programming\\March! Projects\\March! Projects\\March-Executable\\.venv\\Lib\\site-packages\\mediapipe"
     ],
 }
 
