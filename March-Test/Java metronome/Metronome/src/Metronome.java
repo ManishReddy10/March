@@ -1,5 +1,5 @@
 import java.util.Timer;
-
+import java.time.Duration;
 import java.time.Instant;
 
 import javax.sound.sampled.AudioInputStream;
@@ -33,6 +33,9 @@ public class Metronome {
         playSound("strong_beat.wav");
     }
 
+    Instant start;
+    Instant end;
+    Duration elapsed;
     public void startMetronome(double bpm) {
 
         
@@ -40,6 +43,7 @@ public class Metronome {
         
         
         while (isMetronomeOn) {
+            start = Instant.now();
             playMetronomeStrongBeat();
             synchronized (this) {
                 try {
@@ -49,6 +53,10 @@ public class Metronome {
                     System.err.println("Metronome interrupted: " + e.getMessage());
                 }
             }
+            end = Instant.now();
+            elapsed = Duration.between(start, end);
+            System.out.println("Elapsed time in milliseconds: " + elapsed.toMillis());
+
         }
     }
 
