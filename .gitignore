@@ -123,3 +123,34 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Files for IntelliJ IDEA
+.idea/
+*.iml
+
+# Files for Eclipse
+.classpath
+.project
+.settings/
+
+# Maven files
+target/
+
+# Gradle files
+.gradle/
+build/
+
+# OS generated files #
+.DS_Store
+Thumbs.db
