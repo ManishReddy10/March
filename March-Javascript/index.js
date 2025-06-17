@@ -1,13 +1,11 @@
-// console.log('Hello WOrld!');
-// window.alert('ALERT!');
+// index.js
+const video = document.getElementById('video');
 
-document.getElementById("myH1").innerHTML = "<b> Hello </b>";
-document.getElementById("myH1").textContent = "Breathtaking website";
-// document.getElementById("myH1").innerHTML = "<i> Hello </i>";
-function myFunction() {
-    // document.getElementById("nameButton").onclick
-    
-    console.log(document.getElementsByClassName("Button"));
-}
-
-console.log(document.getElementsByClassName("Button"));
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    video.srcObject = stream;
+  })
+  .catch(error => {
+    console.error('Error accessing the camera:', error);
+    alert('Could not access the camera. Please allow camera access or check your device.');
+  });
