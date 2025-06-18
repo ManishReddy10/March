@@ -1,5 +1,6 @@
 // const { time } = require("console");
 
+
 // console.time("myTimer")
 // index.js
 const video = document.getElementById('video');
