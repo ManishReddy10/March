@@ -1,5 +1,6 @@
-const { time } = require("console");
+// const { time } = require("console");
 
+// console.time("myTimer")
 // index.js
 const video = document.getElementById('video');
 const metronomeSound = new Audio('strong_beat.wav');
@@ -17,6 +18,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 function startMetronome(bpm) {
   setInterval(() => metronomeSound.play(), 500);
+  // console.timeStamp
 }
 
 startMetronome(120);
