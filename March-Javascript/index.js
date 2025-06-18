@@ -2,6 +2,7 @@
 
 // console.time("myTimer")
 // index.js
+
 const video = document.getElementById('video');
 const metronomeSound = new Audio('strong_beat.wav');
 const startMetronomeButton = document.getElementById('startMetronomeButton');
