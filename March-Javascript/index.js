@@ -1,7 +1,10 @@
+const { time } = require("console");
+
 // index.js
 const video = document.getElementById('video');
 const metronomeSound = new Audio('strong_beat.wav');
 const startMetronomeButton = document.getElementById('startMetronomeButton');
+const testOutput = document.getElementById('testOutput')
 
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
@@ -12,17 +15,32 @@ navigator.mediaDevices.getUserMedia({ video: true })
     alert('Could not access the camera. Please allow camera access or check your device.');
   });
 
-
 function startMetronome(bpm) {
-    setInterval(() => metronomeSound.play(),500);
+  setInterval(() => metronomeSound.play(), 500);
 }
-
 
 startMetronome(120);
 
 function onStartMetronomeButtonClick() {
-    startMetronomeButton
+  startMetronomeButton
 }
+
+class Metronome {
+
+  constructor(bpm) {
+
+  }
+
+  startMetronome() {
+
+  }
+
+  stopMetronome() {
+
+  }
+}
+
+// http://127.0.0.1:5500/March-Javascript/
 
 /**
  * Metronome logic
