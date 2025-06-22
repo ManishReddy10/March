@@ -2,10 +2,15 @@ const video = document.getElementById('video');
 const metronomeSound = new Audio('strong_beat.wav');
 const startMetronomeButton = document.getElementById('startMetronomeButton');
 const testOutput = document.getElementById('testOutput')
+let bodyPose;
+bodyPose = ml5.bodyPose("BlazePose");
+
 
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
+  
     video.srcObject = stream;
+  
   })
   .catch(error => {
     console.error('Error accessing the camera:', error);
