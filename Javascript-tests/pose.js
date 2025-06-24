@@ -119,12 +119,10 @@ function onResults(results) {
         // }
 
         // Event listener for mouse click which will take a screenshot of page and log the pose arrays
-        if ('mousedown', function(e) {
-            
-        });
-        
         document.addEventListener('mousedown', function(e) {
             console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
+            console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
+            console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
             
         });
 
