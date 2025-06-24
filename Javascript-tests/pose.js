@@ -1,6 +1,6 @@
 // Variable to disable the video and prevent mediapipe model from function. Added so development could be easier
  
-const disableModel = true;
+const disableModel = false;
 
 import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // Usage: testSupport({client?: string, os?: string}[])
