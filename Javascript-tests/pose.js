@@ -112,6 +112,23 @@ function onResults(results) {
             .map(index => results.poseLandmarks[index]), { visibilityMin: 0.65, color: 'white', fillColor: 'rgb(0,217,231)' });
         drawingUtils.drawLandmarks(canvasCtx, Object.values(mpPose.POSE_LANDMARKS_NEUTRAL)
             .map(index => results.poseLandmarks[index]), { visibilityMin: 0.65, color: 'white', fillColor: 'white' });
+
+        // if (Object.values(mpPose.POSE_LANDMARKS_NEUTRAL)
+        //     .map(index => results.poseLandmarks[index]) === Object) {
+
+        // }
+
+        // Event listener for mouse click which will take a screenshot of page and log the pose arrays
+        if ('mousedown', function(e) {
+            
+        });
+        
+        document.addEventListener('mousedown', function(e) {
+            console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
+            
+        });
+
+        
     }
     canvasCtx.restore();
     if (results.poseWorldLandmarks) {
