@@ -1,3 +1,7 @@
+// Variable to disable the video and prevent mediapipe model from function. Added so development could be easier
+ 
+const disableModel = true;
+
 import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // Usage: testSupport({client?: string, os?: string}[])
 // Client and os are regular expressions.
@@ -40,6 +44,10 @@ const options = {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose@${mpPose.VERSION}/${file}`;
     }
 };
+
+if (!disableModel) {
+    
+
 // Our input frames will come from here.
 const videoElement = document.getElementsByClassName('input_video')[0];
 const canvasElement = document.getElementsByClassName('output_canvas')[0];
@@ -188,4 +196,41 @@ new controls
     videoElement.classList.toggle('selfie', options.selfieMode);
     activeEffect = x['effect'];
     pose.setOptions(options);
+});
+
+}
+
+const greenBox = document.getElementById('footYoureOn');
+greenBox.style.position = 'absolute';
+greenBox.style.width = '300px';
+greenBox.style.height = '30px';
+greenBox.style.background = 'limegreen';
+greenBox.style.top = '40px';
+greenBox.style.left = '40px';
+greenBox.style.borderRadius = '10px';
+greenBox.style.cursor = 'grab';
+greenBox.style.zIndex = 1000;
+document.body.appendChild(greenBox);
+
+let isDraggingGreen = false;
+let offsetXGreen, offsetYGreen;
+
+greenBox.addEventListener('mousedown', function(e) {
+  isDraggingGreen = true;
+  offsetXGreen = e.clientX - greenBox.offsetLeft;
+  offsetYGreen = e.clientY - greenBox.offsetTop;
+  greenBox.style.cursor = 'grabbing';
+  greenBox.textContent = "has been clicked"
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDraggingGreen) {
+    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
+    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  isDraggingGreen = false;
+  greenBox.style.cursor = 'grab';
 });
