@@ -1,6 +1,6 @@
 // Variable to disable the video and prevent mediapipe model from function. Added so development could be easier
  
-const disableModel = true;
+let disableModel = false;
 
 import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // Usage: testSupport({client?: string, os?: string}[])
@@ -75,6 +75,7 @@ const grid = new LandmarkGrid(landmarkContainer, {
 });
 let activeEffect = 'mask';
 function onResults(results) {
+    if (!disableModel) {
     // Hide the spinner.
     document.body.classList.add('loaded');
     // Update the frame rate.
@@ -118,13 +119,34 @@ function onResults(results) {
 
         // }
 
-        // Event listener for mouse click which will take a screenshot of page and log the pose arrays
+        
+        const leftKneeIndex = mpPose.POSE_LANDMARKS_LEFT.LEFT_KNEE;
+        const rightKneeIndex = mpPose.POSE_LANDMARKS_RIGHT.RIGHT_KNEE;
+        const leftKnee = results.poseLandmarks[leftKneeIndex];
+        const rightKnee = results.poseLandmarks[rightKneeIndex];
+
+
+
         document.addEventListener('mousedown', function(e) {
             console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
             console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
             console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
             
-        });
+            console.log('Left Knee:', {
+                x: leftKnee.x,
+                y: leftKnee.y,
+                z: leftKnee.z,
+                visibility: leftKnee.visibility
+            });
+
+            console.log('Right Knee:', {
+                x: rightKnee.x,
+                y: rightKnee.y,
+                z: rightKnee.z,
+                visibility: rightKnee.visibility
+            });
+        }); 
+        
 
         
     }
@@ -138,6 +160,7 @@ function onResults(results) {
     else {
         grid.updateLandmarks([]);
     }
+     }
 }
 const pose = new mpPose.Pose(options);
 pose.onResults(onResults);
@@ -215,7 +238,7 @@ new controls
 
 }
 
-const greenBox = document.getElementById('footYoureOn');
+const greenBox = document.getElementById('greenBox');
 greenBox.style.position = 'absolute';
 greenBox.style.width = '300px';
 greenBox.style.height = '30px';
@@ -235,7 +258,25 @@ greenBox.addEventListener('mousedown', function(e) {
   offsetXGreen = e.clientX - greenBox.offsetLeft;
   offsetYGreen = e.clientY - greenBox.offsetTop;
   greenBox.style.cursor = 'grabbing';
-  greenBox.textContent = "has been clicked"
+  
+  if (disableModel == false) {
+      greenBox.textContent = "click to start the model";
+      console.log("model has been disabled");
+      disableModel = true;
+  
+    } else {
+    greenBox.textContent = "click to stop the model";
+    console.log("model has been enabled");
+    disableModel = false;
+    
+
+    }
+  
+//   if (disableModel == true) {
+// } 
+});
+greenBox.addEventListener('mousedown', function(e) {
+
 });
 
 document.addEventListener('mousemove', function(e) {
