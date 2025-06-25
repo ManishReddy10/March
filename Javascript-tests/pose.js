@@ -2,6 +2,60 @@
  
 let disableModel = false;
 
+const greenBox = document.getElementById('greenBox');
+greenBox.style.position = 'absolute';
+greenBox.style.width = '300px';
+greenBox.style.height = '30px';
+greenBox.style.background = 'limegreen';
+greenBox.style.top = '40px';
+greenBox.style.left = '40px';
+greenBox.style.borderRadius = '10px';
+greenBox.style.cursor = 'grab';
+greenBox.style.zIndex = 1000;
+document.body.appendChild(greenBox);
+
+let isDraggingGreen = false;
+let offsetXGreen, offsetYGreen;
+
+function updatePauseButtonMessage() {
+    if (disableModel === false) {
+        greenBox.textContent = "click to stop the model";
+    } else {
+        greenBox.textContent = "click to start the model";
+    }
+}
+
+greenBox.addEventListener('mousedown', function(e) {
+  isDraggingGreen = true;
+  offsetXGreen = e.clientX - greenBox.offsetLeft;
+  offsetYGreen = e.clientY - greenBox.offsetTop;
+  greenBox.style.cursor = 'grabbing';
+  
+  disableModel = !disableModel;
+  updatePauseButtonMessage();
+  
+//   if (disableModel == true) {
+// } 
+});
+greenBox.addEventListener('mousedown', function(e) {
+
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDraggingGreen) {
+    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
+    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  isDraggingGreen = false;
+  greenBox.style.cursor = 'grab';
+});
+
+
+updatePauseButtonMessage();
+
 import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // Usage: testSupport({client?: string, os?: string}[])
 // Client and os are regular expressions.
@@ -238,55 +292,3 @@ new controls
 
 }
 
-const greenBox = document.getElementById('greenBox');
-greenBox.style.position = 'absolute';
-greenBox.style.width = '300px';
-greenBox.style.height = '30px';
-greenBox.style.background = 'limegreen';
-greenBox.style.top = '40px';
-greenBox.style.left = '40px';
-greenBox.style.borderRadius = '10px';
-greenBox.style.cursor = 'grab';
-greenBox.style.zIndex = 1000;
-document.body.appendChild(greenBox);
-
-let isDraggingGreen = false;
-let offsetXGreen, offsetYGreen;
-
-greenBox.addEventListener('mousedown', function(e) {
-  isDraggingGreen = true;
-  offsetXGreen = e.clientX - greenBox.offsetLeft;
-  offsetYGreen = e.clientY - greenBox.offsetTop;
-  greenBox.style.cursor = 'grabbing';
-  
-  if (disableModel == false) {
-      greenBox.textContent = "click to start the model";
-      console.log("model has been disabled");
-      disableModel = true;
-  
-    } else {
-    greenBox.textContent = "click to stop the model";
-    console.log("model has been enabled");
-    disableModel = false;
-    
-
-    }
-  
-//   if (disableModel == true) {
-// } 
-});
-greenBox.addEventListener('mousedown', function(e) {
-
-});
-
-document.addEventListener('mousemove', function(e) {
-  if (isDraggingGreen) {
-    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
-    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
-  }
-});
-
-document.addEventListener('mouseup', function() {
-  isDraggingGreen = false;
-  greenBox.style.cursor = 'grab';
-});
