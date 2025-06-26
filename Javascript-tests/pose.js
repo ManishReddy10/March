@@ -1,6 +1,7 @@
 // Variable to disable the video and prevent mediapipe model from function. Added so development could be easier
  
 let disableModel = false;
+let disableLogging = true;
 
 const greenBox = document.getElementById('greenBox');
 greenBox.style.position = 'absolute';
@@ -182,23 +183,26 @@ function onResults(results) {
 
 
         document.addEventListener('mousedown', function(e) {
-            console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
-            console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
-            console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
-            
-            console.log('Left Knee:', {
-                x: leftKnee.x,
-                y: leftKnee.y,
-                z: leftKnee.z,
-                visibility: leftKnee.visibility
-            });
+            if (disableLogging == false) {
+                console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
+                console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
+                console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
+                
+                console.log('Left Knee:', {
+                    x: leftKnee.x,
+                    y: leftKnee.y,
+                    z: leftKnee.z,
+                    visibility: leftKnee.visibility
+                });
+    
+                console.log('Right Knee:', {
+                    x: rightKnee.x,
+                    y: rightKnee.y,
+                    z: rightKnee.z,
+                    visibility: rightKnee.visibility
+                });
 
-            console.log('Right Knee:', {
-                x: rightKnee.x,
-                y: rightKnee.y,
-                z: rightKnee.z,
-                visibility: rightKnee.visibility
-            });
+            }
         }); 
         
 
