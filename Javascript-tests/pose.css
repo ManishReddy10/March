@@ -31,6 +31,10 @@
     overflow: hidden;
   }
   
+  .myClass {
+    color: black;
+  }
+
   .container {
     position: absolute;
     background-color: #596e73;
@@ -56,21 +60,25 @@
   
   .canvas-container {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
     justify-content: center;
     align-items: center;
+
   }
   
   .output_canvas {
-    width: 100%;
+    width: 50%;
     display: block;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000;
     position: relative;
-    left: 0;
-    top: 0;
+    left: 25%;
+    
   }
   
-  .logo {
+  /* .logo {aaaa
     bottom: 10px;
     right: 20px;
   }
@@ -84,12 +92,26 @@
     font-size: 10px;
     left: -30px;
     top: 20px;
-  }
+  } */
   
   .control-panel {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    width: 50%;
+    left: 100px;
+    top: 100px;
+    color: rgb(127, 255, 155);
+  }
+
+  .control-panel-expander{
+    /* border-radius: 100 13px 13px 100 !important;
+    right: 100px !important;
+    /* size: 10% !important; */
+    /* height: 200px !important;
+    width: 50% !important;  */
+    left: 10px !important;
+    top: 10px !important;
+    background-color: rgb(109, 4, 22);
+    position: static !important;
   }
   
   .loading {
@@ -122,11 +144,11 @@
     opacity: 0;
   }
   
-  .shoutout {
-    left: 0;
+  /* .shoutout {
+    left: 0;a
     right: 0;
     bottom: 40px;
     text-align: center;
     font-size: 24px;
     position: absolute;
-  }
+  } */

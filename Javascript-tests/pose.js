@@ -15,45 +15,78 @@ greenBox.style.cursor = 'grab';
 greenBox.style.zIndex = 1000;
 document.body.appendChild(greenBox);
 
-let isDraggingGreen = false;
+let isDraggingGreen = null;
+let isPressingGreen = null;
+let isHoveringOverGreen = null;
+
 let offsetXGreen, offsetYGreen;
 
 function updatePauseButtonMessage() {
     if (disableModel === false) {
         greenBox.textContent = "click to stop the model";
+        // elements[0].style.color = 'red';
     } else {
         greenBox.textContent = "click to start the model";
+        // elements[0].style.color = 'red';
     }
 }
 
+
+
+
 greenBox.addEventListener('mousedown', function(e) {
-  isDraggingGreen = true;
+  isPressingGreen = true;
+  console.log(isPressingGreen);
   offsetXGreen = e.clientX - greenBox.offsetLeft;
   offsetYGreen = e.clientY - greenBox.offsetTop;
   greenBox.style.cursor = 'grabbing';
   
-  disableModel = !disableModel;
-  updatePauseButtonMessage();
+  
   
 //   if (disableModel == true) {
 // } 
 });
-greenBox.addEventListener('mousedown', function(e) {
 
+
+greenBox.addEventListener('mouseover', function(e) {
+    isHoveringOverGreen = true;    
+    console.log("MOUSE IS OVER GREEN BOX");
+    
 });
 
 document.addEventListener('mousemove', function(e) {
-  if (isDraggingGreen) {
+  if (isPressingGreen) {
     greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
     greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
+    isDraggingGreen = true;
+  } else{
+    isDraggingGreen = false;
+
   }
 });
 
-document.addEventListener('mouseup', function() {
-  isDraggingGreen = false;
+
+document.addEventListener('mouseup', function(e) {
+  if (isHoveringOverGreen == true) {
+    isPressingGreen = false;
+
+  }
   greenBox.style.cursor = 'grab';
+  if (isDraggingGreen == false) {
+    disableModel = !disableModel;
+    updatePauseButtonMessage();
+  }
 });
 
+////// d
+// let elements = document.getElementsByClassName('shoutout');
+// elements[0].style.color = 'red';
+// for (let i in elements) {
+//   if (elements.hasOwnProperty(i)) {rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+//     elements[i].style.color = 'red';
+//   }
+// }
+////// 
 
 updatePauseButtonMessage();
 
@@ -128,6 +161,10 @@ const grid = new LandmarkGrid(landmarkContainer, {
     showHidden: false,
     centered: true,
 });
+
+
+
+let xVar = "harambe";
 let activeEffect = 'mask';
 function onResults(results) {
     if (!disableModel) {
@@ -175,6 +212,7 @@ function onResults(results) {
         // }
 
         
+
         const leftKneeIndex = mpPose.POSE_LANDMARKS_LEFT.LEFT_KNEE;
         const rightKneeIndex = mpPose.POSE_LANDMARKS_RIGHT.RIGHT_KNEE;
         const leftKnee = results.poseLandmarks[leftKneeIndex];
@@ -187,7 +225,7 @@ function onResults(results) {
                 console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
                 console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
                 console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
-                
+                    
                 console.log('Left Knee:', {
                     x: leftKnee.x,
                     y: leftKnee.y,
@@ -201,6 +239,7 @@ function onResults(results) {
                     z: rightKnee.z,
                     visibility: rightKnee.visibility
                 });
+
 
             }
         }); 
