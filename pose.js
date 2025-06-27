@@ -1,6 +1,94 @@
 // Variable to disable the video and prevent mediapipe model from function. Added so development could be easier
  
-const disableModel = false;
+let disableModel = false;
+let disableLogging = true;
+
+const greenBox = document.getElementById('greenBox');
+greenBox.style.position = 'absolute';
+greenBox.style.width = '300px';
+greenBox.style.height = '30px';
+greenBox.style.background = 'limegreen';
+greenBox.style.top = '40px';
+greenBox.style.left = '40px';
+greenBox.style.borderRadius = '10px';
+greenBox.style.cursor = 'grab';
+greenBox.style.zIndex = 1000;
+document.body.appendChild(greenBox);
+
+let isDraggingGreen = null;
+let isPressingGreen = null;
+let isHoveringOverGreen = null;
+
+let offsetXGreen, offsetYGreen;
+
+function updatePauseButtonMessage() {
+    if (disableModel === false) {
+        greenBox.textContent = "click to stop the model";
+        // elements[0].style.color = 'red';
+    } else {
+        greenBox.textContent = "click to start the model";
+        // elements[0].style.color = 'red';
+    }
+}
+
+
+
+
+greenBox.addEventListener('mousedown', function(e) {
+  isPressingGreen = true;
+  console.log(isPressingGreen);
+  offsetXGreen = e.clientX - greenBox.offsetLeft;
+  offsetYGreen = e.clientY - greenBox.offsetTop;
+  greenBox.style.cursor = 'grabbing';
+  
+  
+  
+//   if (disableModel == true) {
+// } 
+});
+
+
+greenBox.addEventListener('mouseover', function(e) {
+    isHoveringOverGreen = true;    
+    console.log("MOUSE IS OVER GREEN BOX");
+    
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isPressingGreen) {
+    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
+    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
+    isDraggingGreen = true;
+  } else{
+    isDraggingGreen = false;
+
+  }
+});
+
+
+document.addEventListener('mouseup', function(e) {
+  if (isHoveringOverGreen == true) {
+    isPressingGreen = false;
+
+  }
+  greenBox.style.cursor = 'grab';
+  if (isDraggingGreen == false) {
+    disableModel = !disableModel;
+    updatePauseButtonMessage();
+  }
+});
+
+////// d
+// let elements = document.getElementsByClassName('shoutout');
+// elements[0].style.color = 'red';
+// for (let i in elements) {
+//   if (elements.hasOwnProperty(i)) {rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+//     elements[i].style.color = 'red';
+//   }
+// }
+////// 
+
+updatePauseButtonMessage();
 
 import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // Usage: testSupport({client?: string, os?: string}[])
@@ -73,8 +161,13 @@ const grid = new LandmarkGrid(landmarkContainer, {
     showHidden: false,
     centered: true,
 });
+
+
+
+let xVar = "harambe";
 let activeEffect = 'mask';
 function onResults(results) {
+    if (!disableModel) {
     // Hide the spinner.
     document.body.classList.add('loaded');
     // Update the frame rate.
@@ -112,6 +205,47 @@ function onResults(results) {
             .map(index => results.poseLandmarks[index]), { visibilityMin: 0.65, color: 'white', fillColor: 'rgb(0,217,231)' });
         drawingUtils.drawLandmarks(canvasCtx, Object.values(mpPose.POSE_LANDMARKS_NEUTRAL)
             .map(index => results.poseLandmarks[index]), { visibilityMin: 0.65, color: 'white', fillColor: 'white' });
+
+        // if (Object.values(mpPose.POSE_LANDMARKS_NEUTRAL)
+        //     .map(index => results.poseLandmarks[index]) === Object) {
+
+        // }
+
+        
+
+        const leftKneeIndex = mpPose.POSE_LANDMARKS_LEFT.LEFT_KNEE;
+        const rightKneeIndex = mpPose.POSE_LANDMARKS_RIGHT.RIGHT_KNEE;
+        const leftKnee = results.poseLandmarks[leftKneeIndex];
+        const rightKnee = results.poseLandmarks[rightKneeIndex];
+
+
+
+        document.addEventListener('mousedown', function(e) {
+            if (disableLogging == false) {
+                console.log(Object.values(mpPose.POSE_LANDMARKS_RIGHT).map(index => results.poseLandmarks[index]));
+                console.log(Object.values(mpPose.POSE_LANDMARKS_LEFT).map(index => results.poseLandmarks[index]));
+                console.log(Object.values(mpPose.POSE_LANDMARKS_NEUTRAL).map(index => results.poseLandmarks[index]));
+                    
+                console.log('Left Knee:', {
+                    x: leftKnee.x,
+                    y: leftKnee.y,
+                    z: leftKnee.z,
+                    visibility: leftKnee.visibility
+                });
+    
+                console.log('Right Knee:', {
+                    x: rightKnee.x,
+                    y: rightKnee.y,
+                    z: rightKnee.z,
+                    visibility: rightKnee.visibility
+                });
+
+
+            }
+        }); 
+        
+
+        
     }
     canvasCtx.restore();
     if (results.poseWorldLandmarks) {
@@ -123,6 +257,7 @@ function onResults(results) {
     else {
         grid.updateLandmarks([]);
     }
+     }
 }
 const pose = new mpPose.Pose(options);
 pose.onResults(onResults);
@@ -200,37 +335,3 @@ new controls
 
 }
 
-const greenBox = document.getElementById('footYoureOn');
-greenBox.style.position = 'absolute';
-greenBox.style.width = '300px';
-greenBox.style.height = '30px';
-greenBox.style.background = 'limegreen';
-greenBox.style.top = '40px';
-greenBox.style.left = '40px';
-greenBox.style.borderRadius = '10px';
-greenBox.style.cursor = 'grab';
-greenBox.style.zIndex = 1000;
-document.body.appendChild(greenBox);
-
-let isDraggingGreen = false;
-let offsetXGreen, offsetYGreen;
-
-greenBox.addEventListener('mousedown', function(e) {
-  isDraggingGreen = true;
-  offsetXGreen = e.clientX - greenBox.offsetLeft;
-  offsetYGreen = e.clientY - greenBox.offsetTop;
-  greenBox.style.cursor = 'grabbing';
-  greenBox.textContent = "has been clicked"
-});
-
-document.addEventListener('mousemove', function(e) {
-  if (isDraggingGreen) {
-    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
-    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
-  }
-});
-
-document.addEventListener('mouseup', function() {
-  isDraggingGreen = false;
-  greenBox.style.cursor = 'grab';
-});
