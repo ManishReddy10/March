@@ -70,7 +70,7 @@ document.addEventListener('mousemove', function(e) {
 });
 
 
-document.addEventListener('mouseup', function(e) {
+greenBox.addEventListener('mouseup', function(e) {
     const rect = greenBox.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
