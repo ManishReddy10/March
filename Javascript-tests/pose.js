@@ -10,9 +10,13 @@ greenBox.style.height = '30px';
 greenBox.style.background = 'limegreen';
 greenBox.style.top = '40px';
 greenBox.style.left = '40px';
-greenBox.style.borderRadius = '10px';
 greenBox.style.cursor = 'grab';
 greenBox.style.zIndex = 1000;
+greenBox.style.borderRadius = '10px';
+const greenBoxBorderWidth = 4;
+greenBox.style.borderWidth = (greenBoxBorderWidth + "px");
+greenBox.style.borderColor = 'black';
+greenBox.style.borderStyle = 'solid';
 document.body.appendChild(greenBox);
 
 let isDraggingGreen = null;
@@ -24,10 +28,8 @@ let offsetXGreen, offsetYGreen;
 function updatePauseButtonMessage() {
     if (disableModel === false) {
         greenBox.textContent = "click to stop the model";
-        // elements[0].style.color = 'red';
     } else {
         greenBox.textContent = "click to start the model";
-        // elements[0].style.color = 'red';
     }
 }
 
@@ -54,30 +56,54 @@ greenBox.addEventListener('mouseover', function(e) {
     
 });
 
-document.addEventListener('mousemove', function(e) {
-  if (isPressingGreen) {
-    greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
-    greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
-    isDraggingGreen = true;
-  } else{
-    isDraggingGreen = false;
 
-  }
+
+document.addEventListener('mousemove', function(e) {
+    if (isPressingGreen) {
+        greenBox.style.left = (e.clientX - offsetXGreen) + 'px';
+        greenBox.style.top = (e.clientY - offsetYGreen) + 'px';
+        isDraggingGreen = true;
+    } else{
+        isDraggingGreen = false;
+        
+    }
 });
 
 
 document.addEventListener('mouseup', function(e) {
-  if (isHoveringOverGreen == true) {
-    isPressingGreen = false;
+    const rect = greenBox.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  }
-  greenBox.style.cursor = 'grab';
-  if (isDraggingGreen == false) {
-    disableModel = !disableModel;
-    updatePauseButtonMessage();
-  }
+    const insideLeft = x < greenBoxBorderWidth;
+    const insideRight = x > rect.width - greenBoxBorderWidth;
+    const insideTop = y < greenBoxBorderWidth;
+    const insideBottom = y > rect.height - greenBoxBorderWidth;
+
+    const onBorder = insideLeft || insideRight || insideTop || insideBottom;
+
+    if (e.target === greenBox && onBorder) {
+        console.log("TouchingBorder");
+    }
+
+    if (isHoveringOverGreen) {
+        isPressingGreen = false;
+    }
+
+    greenBox.style.cursor = 'grab';
+
+    // Only toggle model if it was a click, not a drag
+    if (isDraggingGreen === false) {
+        disableModel = !disableModel;
+        updatePauseButtonMessage();
+    }
+
+    isDraggingGreen = false;  // Reset drag state
 });
 
+greenBox.addEventListener('mouseout', () => {
+    isHoveringOverGreen = false;
+});
 ////// d
 // let elements = document.getElementsByClassName('shoutout');
 // elements[0].style.color = 'red';
