@@ -3,6 +3,15 @@
 let disableModel = false;
 let disableLogging = true;
 
+const hamMenu = document.querySelector(".ham-menu");
+
+const offScreenMenu = document.querySelector(".off-screen-menu");
+
+hamMenu.addEventListener("click", () => {
+  hamMenu.classList.toggle("active");
+  offScreenMenu.classList.toggle("active");
+});
+
 const greenBox = document.getElementById('greenBox');
 greenBox.style.position = 'absolute';
 greenBox.style.width = '300px';
@@ -32,10 +41,8 @@ function updatePauseButtonMessage() {
         greenBox.textContent = "click to start the model";
     }
 }
-
-
-
-
+    
+   
 greenBox.addEventListener('mousedown', function(e) {
   isPressingGreen = true;
   console.log(isPressingGreen);
@@ -43,8 +50,7 @@ greenBox.addEventListener('mousedown', function(e) {
   offsetYGreen = e.clientY - greenBox.offsetTop;
   greenBox.style.cursor = 'grabbing';
   
-  
-  
+
 //   if (disableModel == true) {
 // } 
 });
