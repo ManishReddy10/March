@@ -12,6 +12,15 @@ hamMenu.addEventListener("click", () => {
   offScreenMenu.classList.toggle("active");
 });
 
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
 const greenBox = document.getElementById('greenBox');
 greenBox.style.position = 'absolute';
 greenBox.style.width = '300px';
