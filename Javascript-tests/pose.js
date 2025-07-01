@@ -12,13 +12,13 @@ hamMenu.addEventListener("click", () => {
   offScreenMenu.classList.toggle("active");
 });
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
+// var slider = document.getElementById("myRange");
+// var output = document.getElementById("demo");
+// output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
+// slider.oninput = function() {
+//   output.innerHTML = this.value;
+// }
 
 
 const greenBox = document.getElementById('greenBox');
@@ -26,8 +26,8 @@ greenBox.style.position = 'absolute';
 greenBox.style.width = '300px';
 greenBox.style.height = '30px';
 greenBox.style.background = 'limegreen';
-greenBox.style.top = '40px';
-greenBox.style.left = '40px';
+greenBox.style.bottom = '40px';
+greenBox.style.right = '40px';
 greenBox.style.cursor = 'grab';
 greenBox.style.zIndex = 1000;
 greenBox.style.borderRadius = '10px';
