@@ -302,6 +302,56 @@ nav {
 
 }
 
+.beat-type {
+  font-size: x-large;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  /* padding: 1rem 0; */
+  position: relative;
+  justify-content: center;
+  background-color: #6F86FF;
+  border-radius: 15px;
+  border-color:#6F86FF;
+  border-width: 10px;
+  border-style: solid; 
+}
+
+.normal-beat-option {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  /* padding: 1rem 0; */
+  position: relative;
+  justify-content: center;
+  background-color: red;
+  /* border-radius: 15px; */
+  /* border-color:#000;
+  border-width: 10px;
+  border-style: solid; */
+
+}
+
+.left-right-beat-option {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  /* padding: 1rem 0; */
+  position: relative;
+  justify-content: center;
+  background-color: green;
+  /* border-radius: 15px; */
+  /* border-color:#000;
+  border-width: 10px;
+  border-style: solid; */
+}
+
 .difficulty-options {
   font-size: x-large;
   width: 100%;
@@ -338,7 +388,10 @@ nav {
 }
 
 .easy-option.active {
-
+  border-color: rgb(34, 37, 49);
+  /* border-radius: 15px; */
+  /* border-width: 3px; */
+  border-style: solid;
 }
 
 
@@ -358,6 +411,13 @@ nav {
   border-style: solid; */
 }
 
+.medium-option.active {
+  border-color: rgb(34, 37, 49);
+  /* border-radius: 15px; */
+  /* border-width: 3px; */
+  border-style: solid;
+}
+
 .hard-option {
   width: 100%;
   max-width: 450px;
@@ -372,6 +432,13 @@ nav {
   /* border-color:#000;
   border-width: 10px;
   border-style: solid; */
+}
+
+.hard-option.active {
+  border-color: rgb(34, 37, 49);
+  /* border-radius: 15px; */
+  /* border-width: 3px; */
+  border-style: solid;
 }
 
 .volume-icon {

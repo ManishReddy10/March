@@ -12,6 +12,57 @@ hamMenu.addEventListener("click", () => {
   offScreenMenu.classList.toggle("active");
 });
 
+const easyOptionButton = document.querySelector(".easy-option");
+const mediumOptionButton = document.querySelector(".medium-option");
+const hardOptionButton = document.querySelector(".hard-option");
+
+easyOptionButton.addEventListener("click", () => {
+  console.log(easyOptionButton.className);
+  if (easyOptionButton.className !== "easy-option active") {
+    
+    easyOptionButton.classList.toggle("active");
+    
+    if (hardOptionButton.className == "hard-option active") {
+    hardOptionButton.classList.toggle("active");
+    }
+
+    if (mediumOptionButton.className == "medium-option active") {
+    mediumOptionButton.classList.toggle("active");
+    }
+
+  }
+});
+
+mediumOptionButton.addEventListener("click", () => {
+  if (mediumOptionButton.className !== "medium-option active") {
+    
+    mediumOptionButton.classList.toggle("active");
+    
+    if (easyOptionButton.className == "easy-option active") {
+    easyOptionButton.classList.toggle("active");
+    }
+
+    if (hardOptionButton.className == "hard-option active") {
+    hardOptionButton.classList.toggle("active");
+    }
+  }
+});
+
+hardOptionButton.addEventListener("click", () => {
+  if ((hardOptionButton.className !== "hard-option active")) {
+    
+    hardOptionButton.classList.toggle("active");
+    
+    if (easyOptionButton.className == "easy-option active") {
+    easyOptionButton.classList.toggle("active");
+    }
+
+    if (mediumOptionButton.className == "medium-option active") {
+    mediumOptionButton.classList.toggle("active");
+    }
+  }
+});
+
 var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 // output.innerHTML = slider.value;
