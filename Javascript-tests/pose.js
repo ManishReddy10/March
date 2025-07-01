@@ -12,13 +12,14 @@ hamMenu.addEventListener("click", () => {
   offScreenMenu.classList.toggle("active");
 });
 
-// var slider = document.getElementById("myRange");
+var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 // output.innerHTML = slider.value;
 
-// slider.oninput = function() {
-//   output.innerHTML = this.value;
-// }
+slider.oninput = function() {
+  console.log(slider.value);
+  
+}
 
 
 const greenBox = document.getElementById('greenBox');
