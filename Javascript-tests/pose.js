@@ -139,6 +139,7 @@ import DeviceDetector from "https://cdn.skypack.dev/device-detector-js@2.2.10";
 // legal values for client and os
 testSupport([
     { client: 'Chrome' },
+    { client: 'Firefox' },
 ]);
 function testSupport(supportedDevices) {
     const deviceDetector = new DeviceDetector();
