@@ -16,6 +16,9 @@ const easyOptionButton = document.querySelector(".easy-option");
 const mediumOptionButton = document.querySelector(".medium-option");
 const hardOptionButton = document.querySelector(".hard-option");
 
+// defaults to easyOptionButton
+easyOptionButton.classList.toggle("active");
+
 easyOptionButton.addEventListener("click", () => {
   console.log(easyOptionButton.className);
   if (easyOptionButton.className !== "easy-option active") {
@@ -51,6 +54,8 @@ mediumOptionButton.addEventListener("click", () => {
 const leftRightBeatOptionButton = document.querySelector(".left-right-beat-option");
 const normalBeatOptionButton = document.querySelector(".normal-beat-option");
 
+// defaults to leftRightBeatOptionButton
+leftRightBeatOptionButton.classList.toggle("active");
 
 leftRightBeatOptionButton.addEventListener("click", () => {
   if ((leftRightBeatOptionButton.className !== "left-right-beat-option active")) {
