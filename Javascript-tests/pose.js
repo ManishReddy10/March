@@ -48,6 +48,34 @@ mediumOptionButton.addEventListener("click", () => {
   }
 });
 
+const leftRightBeatOptionButton = document.querySelector(".left-right-beat-option");
+const normalBeatOptionButton = document.querySelector(".normal-beat-option");
+
+
+leftRightBeatOptionButton.addEventListener("click", () => {
+  if ((leftRightBeatOptionButton.className !== "left-right-beat-option active")) {
+    
+    leftRightBeatOptionButton.classList.toggle("active");
+    
+    if (normalBeatOptionButton.className == "normal-beat-option active") {
+    normalBeatOptionButton.classList.toggle("active");
+    }
+
+  }
+});
+
+normalBeatOptionButton.addEventListener("click", () => {
+  if ((normalBeatOptionButton.className !== "normal-beat-option active")) {
+    
+    normalBeatOptionButton.classList.toggle("active");
+    
+    if (leftRightBeatOptionButton.className == "left-right-beat-option active") {
+    leftRightBeatOptionButton.classList.toggle("active");
+    }
+
+  }
+});
+
 hardOptionButton.addEventListener("click", () => {
   if ((hardOptionButton.className !== "hard-option active")) {
     

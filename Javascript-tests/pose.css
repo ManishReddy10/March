@@ -336,6 +336,14 @@ nav {
 
 }
 
+.normal-beat-option.active {
+  border-color: rgb(34, 37, 49);
+  /* border-radius: 15px; */
+  /* border-width: 3px; */
+  border-style: solid;
+}
+
+
 .left-right-beat-option {
   width: 100%;
   max-width: 450px;
@@ -350,6 +358,13 @@ nav {
   /* border-color:#000;
   border-width: 10px;
   border-style: solid; */
+}
+
+.left-right-beat-option.active {
+  border-color: rgb(34, 37, 49);
+  /* border-radius: 15px; */
+  /* border-width: 3px; */
+  border-style: solid;
 }
 
 .difficulty-options {
