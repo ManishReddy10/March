@@ -32,23 +32,23 @@
       position: absolute;
       top:0;
       left:0;
-      background-color: #a1272799;
+      background-color: rgb(34, 37, 49);
     }
   </style>
 </head>
 
 <body>
-  <h1 class = myClass> HELLO WORLD</h1>
-  <body>
+  <h1 class = myClass> March!</h1>
+
 
     <div class="container">
       <video class="input_video"></video>
       <canvas class="output_canvas" width="640" height="480"></canvas>
       <div class="loading">
-        <div class="spinner"></div>
         <div class="message">
-          Loading
+          Loading...
         </div>
+        <div class="spinner"></div>
       </div>
       <!-- <a class="abs logo" href="http://www.mediapipe.dev" target="_blank">
         <div style="display: flex;align-items: center;bottom: 0;right: 10px;">
@@ -65,16 +65,57 @@
         </div>
       </div> -->
     </div>
-    <div class="control-panel">
-    </div>
     <div class='square-box'>
       <div class="landmark-grid-container">
       </div>
     </div>
+    <div class="off-screen-menu">
+      <div class="volume-adjusting">
+        <img class="volume-icon" src="./img/Speaker_Icon.svg.png" alt="Generic placeholder image">
+        <!-- <div class="slidecontainer"> -->
+             <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+             
+             
+            <!-- </div> -->
+            <p><span id="demo"></span></p>
+
+
+      </div>
+      <!-- <div class="sidebarLinks">
+        <ul>
+          <li><a href="#">Difficulty</a></li>
+          <li><a href="#">Volume</a></li>
+          <li><a href="#">Sound</a></li>
+        </ul>
+      </div> -->
+      <div class="seperator-block">Difficulty</div>
+      <div class="difficulty-options">
+        <div class="easy-option"> <a>Easy</a></div>
+        <div class="medium-option"> <a>Medium</a> </div>
+        <div class="hard-option"> <a>Hard</a> </div>
+      </div>
+      <div class="seperator-block">Metronome Sound</div>
+      <div class="beat-type">
+        <div class="left-right-beat-option"> <a>Left/Right</a></div>
+        <div class="normal-beat-option"> <a>Metronome Beat</a> </div>
+
+      </div>
+      
+      <div class="control-panel"></div>
+      
+    </div>
+    
+    <nav>
+      <div class="ham-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
     <div id="greenBox"> 
       PAUSE 
     </div>
-
+  </body>
 
 
 </html>
