@@ -51,6 +51,21 @@ mediumOptionButton.addEventListener("click", () => {
   }
 });
 
+hardOptionButton.addEventListener("click", () => {
+  if ((hardOptionButton.className !== "hard-option active")) {
+    
+    hardOptionButton.classList.toggle("active");
+    
+    if (easyOptionButton.className == "easy-option active") {
+    easyOptionButton.classList.toggle("active");
+    }
+
+    if (mediumOptionButton.className == "medium-option active") {
+    mediumOptionButton.classList.toggle("active");
+    }
+  }
+});
+
 const leftRightBeatOptionButton = document.querySelector(".left-right-beat-option");
 const normalBeatOptionButton = document.querySelector(".normal-beat-option");
 
@@ -81,20 +96,7 @@ normalBeatOptionButton.addEventListener("click", () => {
   }
 });
 
-hardOptionButton.addEventListener("click", () => {
-  if ((hardOptionButton.className !== "hard-option active")) {
-    
-    hardOptionButton.classList.toggle("active");
-    
-    if (easyOptionButton.className == "easy-option active") {
-    easyOptionButton.classList.toggle("active");
-    }
 
-    if (mediumOptionButton.className == "medium-option active") {
-    mediumOptionButton.classList.toggle("active");
-    }
-  }
-});
 
 var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
