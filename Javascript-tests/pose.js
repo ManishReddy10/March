@@ -80,7 +80,7 @@ leftRightBeatOptionButton.addEventListener("click", () => {
     if (normalBeatOptionButton.className == "normal-beat-option active") {
     normalBeatOptionButton.classList.toggle("active");
     }
-
+        
   }
 });
 
