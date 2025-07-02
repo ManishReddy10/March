@@ -374,6 +374,7 @@ function onResults(results) {
         }); 
         
         var testOutput = document.getElementById("demo");
+        // This method of detection works really well on worms eye view
         if (rightKnee.z > leftKnee.z) {
             testOutput.textContent = "right knee is in front"
         }
