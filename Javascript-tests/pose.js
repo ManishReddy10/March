@@ -101,7 +101,7 @@ normalBeatOptionButton.addEventListener("click", () => {
 var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 // output.innerHTML = slider.value;
-
+// test
 slider.oninput = function() {
   console.log(slider.value);
   
