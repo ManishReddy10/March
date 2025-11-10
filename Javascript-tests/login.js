@@ -52,6 +52,7 @@
     var status = document.getElementById("status");
     if (user) {
       status.innerHTML = "hi " + user.email;
+      window.location.href = "pose.html";
     } else {
       status.innerHTML = "not in";
     }
