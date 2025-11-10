@@ -80,7 +80,7 @@ leftRightBeatOptionButton.addEventListener("click", () => {
     if (normalBeatOptionButton.className == "normal-beat-option active") {
     normalBeatOptionButton.classList.toggle("active");
     }
-
+        
   }
 });
 
@@ -101,7 +101,7 @@ normalBeatOptionButton.addEventListener("click", () => {
 var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 // output.innerHTML = slider.value;
-
+// test
 slider.oninput = function() {
   console.log(slider.value);
   
@@ -374,6 +374,7 @@ function onResults(results) {
         }); 
         
         var testOutput = document.getElementById("demo");
+        // This method of detection works really well on worms eye view
         if (rightKnee.z > leftKnee.z) {
             testOutput.textContent = "right knee is in front"
         }
